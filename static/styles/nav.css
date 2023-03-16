@@ -1,0 +1,21 @@
+nav {
+  width: 100%;
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  
+  background-color: lightgrey;
+}
+
+.navLink {
+  font-size: 1.5rem;
+  margin: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.navLink:visited {
+  color: initial;
+}

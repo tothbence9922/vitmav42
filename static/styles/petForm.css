@@ -7,23 +7,9 @@ body {
   padding: 0px;
 }
 
-nav {
-  width: 100%;
-  
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  
-  background-color: lightgrey;
-}
-
-.navLink {
-  font-size: 2rem;
-}
-
 .container {
   width: 100%;
+  padding: 0 2rem;
 
   display: flex;
   flex-direction: column;
@@ -71,4 +57,12 @@ nav {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+}
+
+.formButton {
+  text-decoration: none;
+}
+
+.formButton:visited {
+  color: initial;
 }
