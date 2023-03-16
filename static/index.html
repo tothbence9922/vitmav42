@@ -1,4 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <h1>Hello, world!</h1>
+  <head>
+    <link rel="stylesheet" href="styles/index.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="formContainer">
+        <form class="form" action="petList.html">
+          <div class="formRow">
+            <label for="username" class="inputLabel">
+              Username
+            </label>
+            <input id="username" type="text" placeholder="username">
+          </div>
+          <div class="formRow">
+            <label for="password" class="inputLabel">
+              Password
+            </label>
+            <input id="password" type="password">
+          </div>
+          <div class="formRow">
+            <div class="buttonContainer">
+              <a href="register.html" class="styledButton">Register</a>
+              <button type="submit" class="styledButton">Login</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>
