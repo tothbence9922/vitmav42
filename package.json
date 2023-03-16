@@ -1,0 +1,25 @@
+{
+  "name": "vitmav42",
+  "version": "1.0.0",
+  "description": "This is my repository for a course with the code VITMAV42.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tothbence9922/vitmav42.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tothbence9922/vitmav42/issues"
+  },
+  "homepage": "https://github.com/tothbence9922/vitmav42#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
