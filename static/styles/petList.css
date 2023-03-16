@@ -37,13 +37,20 @@ body {
   width: 100%;
 
   margin: 0.5rem 0;
+  padding-left: 1rem;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   align-items: center;
 
+  border-radius: 4px;
   background-color: lightgrey;
   text-decoration: none;
   color: black;
+}
+
+.petItem:hover {
+  background-color: #e2e2e2;
+  transition: 0.2s;
 }
 
 .addPetItem {
@@ -54,7 +61,13 @@ body {
   display: grid;
   place-items: center;
 
-  background-color: lightgrey;
+  border-radius: 4px;
+  background-color: #dedede;
   text-decoration: none;
   color: black;
+}
+
+.addPetItem:hover {
+  transition: 0.2s;
+  color: green;
 }
