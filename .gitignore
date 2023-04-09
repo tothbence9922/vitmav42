@@ -1,2 +1,5 @@
 # Ignore the packages
 /node_modules
+
+# Ignore mac being a weirdo
+.DS_Store
