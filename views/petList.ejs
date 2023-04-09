@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/static/css/globals.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/petList.css">
+  </head>
+  <body>
+    <nav>
+      <a class="navLink" href="/pets">MyPets</a>
+      <a class="navLink logoutButton" href="/logout">Logout</a>
+    </nav>
+    <div class="container">
+      <h1 class="title">
+      Your pets
+      </h1>
+      <div class="petList">
+        <a href="/pets/create" class="addPetItem">
+          <h2>Add a new pet!</h2>
+        </a>
+        <a href="/pets/:1" class="petItem">
+          <h2>Becky</h2>
+          <p>1 year old</p>
+          <p>dog</p>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

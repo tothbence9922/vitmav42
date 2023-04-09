@@ -14,8 +14,8 @@ module.exports = function (app) {
     User: User
   };
 
-  app.use(
-    '/login',
+  app.get(
+    '/',
     checkPassword(objectRepository),
     renderMiddleware(objectRepository, 'index')
   );
