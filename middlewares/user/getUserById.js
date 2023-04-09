@@ -4,7 +4,7 @@
  * If the id is missing, throws an error.
  */
 
-const requireOption = require('../common');
+const requireOption = require('../requireOption');
 
 module.exports = function(objectRepository) {
     return function(req, res, next) {

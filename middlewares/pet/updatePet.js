@@ -5,7 +5,7 @@
  * (It is a PUT, not a PATCH. Id is required aswell in this case)
  */
 
-const requireOption = require('../common');
+const requireOption = require('../requireOption');
 
 module.exports = function(objectRepository) {
     return function(req, res, next) {
