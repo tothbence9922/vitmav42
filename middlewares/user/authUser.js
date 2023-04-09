@@ -1,7 +1,7 @@
 /**
- * Authenticated request.
- * Creates a pet in the database.
- * If any required field is missing, throws an error.
+ * Authentication middleware.
+ * If the credentials are correct, returns a token.
+ * Else, throws an error.
  */
 
 const requireOption = require('../common');

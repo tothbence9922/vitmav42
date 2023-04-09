@@ -1,8 +1,7 @@
 /**
  * Authenticated request.
- * Updates a pet in the database.
- * If any required field is missing, throws an error. 
- * (It is a PUT, not a PATCH. Id is required aswell in this case)
+ * Removes a pet by id from the database.
+ * If the id is missing, throws an error.
  */
 
 const requireOption = require('../common');
