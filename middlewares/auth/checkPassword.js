@@ -4,14 +4,13 @@
  */
 const requireOption = require('../requireOption');
 
-// TODO: use ObjectRepository to check for given user's password
 module.exports = function(objectRepository) {
-    return function(req, res, next) {
-        if (typeof req.body.password === 'undefined') {
+  return function(req, res, next) {
+        if (typeof req?.body?.password === 'undefined') {
             return next();
         }
 
-        if (req.body.password === "TODO: Current user's password") {
+        if (req?.body?.password === "TODO: Current user's password") {
             req.session.token = true;
             return req.session.save(err => res.redirect('/pets'));
         }

@@ -1,7 +1,7 @@
 /**
- * Authenticated request. (see in README.md)
- * Creates a pet in the database.
- * If any required field is missing, throws an error.
+ * Dummy method for forgotten password.
+ * Console logging the user's password.
+ * Redirects to login screen on success.
  */
 
 const requireOption = require('../requireOption');

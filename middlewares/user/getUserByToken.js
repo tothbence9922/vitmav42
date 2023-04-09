@@ -1,7 +1,8 @@
 /**
  * Authenticated request. (see in README.md)
- * Creates a pet in the database.
- * If any required field is missing, throws an error.
+ * Returns a user by auth token, from the database.
+ * If the token is missing, throws an error.
+ * Might be a dummy implementation since no 3rd party IP is used.
  */
 
 const requireOption = require('../requireOption');

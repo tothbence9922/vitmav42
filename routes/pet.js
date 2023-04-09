@@ -7,7 +7,7 @@ const getPetById = require('../middlewares/pet/getPetById');
 const getPets = require('../middlewares/pet/getPets');
 const removePetById = require('../middlewares/pet/removePetById');
 const updatePet = require('../middlewares/pet/updatePet');
-const getUserById = require('../middlewares/user/getUserById');
+const getUserByToken = require('../middlewares/user/getUserByToken');
 
 const Pet = {}
 
@@ -27,7 +27,7 @@ module.exports = function (app) {
   app.get(
     '/pets',
     auth(objectRepository),
-    getUserById(objectRepository),
+    getUserByToken(objectRepository),
     getPets(objectRepository),
     renderMiddleware(objectRepository, 'petList')
   );
