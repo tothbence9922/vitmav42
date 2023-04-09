@@ -5,9 +5,12 @@
  */
 
 const requireOption = require('../requireOption');
+const mockUser = require('../../mock/user/user');
 
 module.exports = function(objectRepository) {
   return function(req, res, next) {
-        return next();
-    };
+    console.log(mockUser.password);
+    res.redirect('/');
+    return next();
+  };
 };

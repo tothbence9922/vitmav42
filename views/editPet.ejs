@@ -6,26 +6,28 @@
     <link rel="stylesheet" type="text/css" href="/static/css/petForm.css">
   </head>
   <body>
-    <nav>
-      <a class="navLink" href="/pets">MyPets</a>
-      <a class="navLink logoutButton" href="/logout">Logout</a>
-    </nav>
-    <div class="container">
-      <h1 class="title">
-      Update Becky's details!
-      </h1>
-      <div class="descriptionContainer">
-        <div class="headline">
-          <input type="text" placeholder="Becky"></input><p>, who is a</p>
-          <input type="number" min="0" placeholder="1" /><p>year(s) old</p>
-          <input type="text" placeholder="dog" />
-        </div>
-        <textarea class="description" >Minim dolor aliqua ex dolore cupidatat. Ipsum non officia voluptate et. Velit qui deserunt officia eiusmod velit commodo nulla minim excepteur nostrud fugiat sint tempor.</textarea>
-        <div class="buttonContainer">
-          <a class="formButton cancelButton" href="/pets">Cancel</a>
-          <a class="formButton saveButton" href="/pets">Save</a>
+    <form method="post">
+      <nav>
+        <a class="navLink" href="/pets">MyPets</a>
+        <a class="navLink logoutButton" href="/logout">Logout</a>
+      </nav>
+      <div class="container">
+        <h1 class="title">
+          Update <%=pet.name%>'s details!
+        </h1>
+        <div class="descriptionContainer">
+          <div class="headline">
+            <input type="text" placeholder="<%=pet.name%>"></input><p>, who is a</p>
+            <input type="number" min="0" placeholder="<%=pet.age%>" /><p>year(s) old</p>
+            <input type="text" placeholder="<%=pet.specie%>" />
+          </div>
+          <textarea class="description" ><%=pet.description%></textarea>
+          <div class="buttonContainer">
+            <a class="formButton cancelButton" href="/pets">Cancel</a>
+            <button type="submit" class="cleanButton formButton saveButton">Save</button>
+          </div>
         </div>
       </div>
-    </div>
+    </form>
   </body>
 </html>

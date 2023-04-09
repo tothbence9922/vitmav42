@@ -12,17 +12,19 @@
     </nav>
     <div class="container">
       <h1 class="title">
-      Your pets
+        <%=user.username%>'s pets
       </h1>
       <div class="petList">
         <a href="/pets/create" class="addPetItem">
           <h2>Add a new pet!</h2>
         </a>
-        <a href="/pets/:1" class="petItem">
-          <h2>Becky</h2>
-          <p>1 year old</p>
-          <p>dog</p>
-        </a>
+        <% pets.forEach(function(pet){ %>
+          <a href="/pets/<%=pet.id%>" class="petItem">
+            <h2><%=pet.name%></h2>
+            <p><%=pet.age%> year old</p>
+            <p><%=pet.specie%></p>
+          </a>
+        <% }); %>
       </div>
     </div>
   </body>

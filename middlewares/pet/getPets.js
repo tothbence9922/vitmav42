@@ -4,9 +4,11 @@
  */
 
 const requireOption = require('../requireOption');
+const mockPets = require('../../mock/pet/petList')
 
 module.exports = function(objectRepository) {
   return function(req, res, next) {
-        return next();
+      res.locals.pets = mockPets;  
+      return next();
     };
 };

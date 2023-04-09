@@ -12,20 +12,20 @@
     </nav>
     <div class="container">
       <h1 class="title">
-      Your pet, Becky
+      Your pet, <%=pet.name%>
       </h1>
       <div class="descriptionContainer">
         <div class="headline">
-          <h1>Becky</h1>
-          <p>1 year old</p>
-          <p>dog</p>
+          <h1><%=pet.name%></h1>
+          <p><%=pet.age%> year old</p>
+          <p><%=pet.species%></p>
         </div>
         <div class="description">
-          Minim dolor aliqua ex dolore cupidatat. Ipsum non officia voluptate et. Velit qui deserunt officia eiusmod velit commodo nulla minim excepteur nostrud fugiat sint tempor.
+          <%=pet.description%>
         </div>
         <div class="buttonContainer">
-          <a class="formButton editButton" href="/pets/:1/update">Edit</a>
-          <a class="formButton deleteButton" href="/pets">Delete</a>
+          <a class="formButton editButton" href="/pets/<%=pet.id%>/update">Edit</a>
+          <a class="formButton deleteButton" href="/pets/<%=pet.id%>/delete">Delete</a>
         </div>
       </div>
     </div>
