@@ -10,7 +10,7 @@ module.exports = function(objectRepository) {
             return next();
         }
 
-        if (req?.body?.password === "TODO: Current user's password") {
+        if (req?.body?.password === "asd") {
             req.session.token = true;
             return req.session.save(err => res.redirect('/pets'));
         }
