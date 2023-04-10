@@ -14,11 +14,6 @@ module.exports = function (app) {
     User: User
   };
 
-  app.get(
-    '/',
-    checkPassword(objectRepository),
-    renderMiddleware(objectRepository, 'index')
-  );
 
   app.use(
     '/register',
@@ -36,4 +31,9 @@ module.exports = function (app) {
     forgotPassword(objectRepository),
   );
 
+  app.use(
+    '/',
+    checkPassword(objectRepository),
+    renderMiddleware(objectRepository, 'index')
+  );
 }
