@@ -15,7 +15,7 @@ module.exports = function (app) {
   };
 
   app.use(
-    '/login',
+    '/',
     checkPassword(objectRepository),
     renderMiddleware(objectRepository, 'index')
   );
