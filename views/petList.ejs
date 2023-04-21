@@ -6,10 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/petList.css">
   </head>
   <body>
-    <nav>
-      <a class="navLink" href="/pets">MyPets</a>
-      <a class="navLink logoutButton" href="/logout">Logout</a>
-    </nav>
+    <%- include('navbar') -%>
     <div class="container">
       <h1 class="title">
         <%= user.username %>'s pets
@@ -19,7 +16,7 @@
           <h2>Add a new pet!</h2>
         </a>
         <% pets.forEach(function(pet){ %>
-          <a href="/pets/<% =pet.id %>" class="petItem">
+          <a href="/pets/<%= pet.id %>" class="petItem">
             <h2><%= pet.name %></h2>
             <p><%= pet.age %> year old</p>
             <p><%= pet.specie %></p>

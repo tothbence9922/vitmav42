@@ -7,10 +7,7 @@
   </head>
   <body>
     <form method="post">
-      <nav>
-        <a class="navLink" href="/pets">MyPets</a>
-        <a class="navLink logoutButton" href="/logout">Logout</a>
-      </nav>
+      <%- include('navbar') -%>
       <div class="container">
         <h1 class="title">
           Update <%= pet.name %>'s details!
