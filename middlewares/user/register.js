@@ -9,10 +9,12 @@ const requireOption = require('../requireOption');
 module.exports = function(objectRepository) {
   return function(req, res, next) {
     if (req?.body?.username && req?.body?.password && req?.body?.confirmPassword) {
-
-      console.log("Register mw called with body:");
-      console.log(req.body);
-      return res.redirect('/');
+      if ( req?.body?.password ===  req?.body?.confirmPassword) {
+        return res.redirect('/');
+      } else {
+        res.locals.username = req?.body?.username;
+        res.locals.error = "Passwords don't match!";
+      }
     }
     return next();
   };
