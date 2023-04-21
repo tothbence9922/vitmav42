@@ -16,16 +16,16 @@
       </h1>
       <div class="descriptionContainer">
         <div class="headline">
-          <h1><%=pet.name%></h1>
-          <p><%=pet.age%> year old</p>
-          <p><%=pet.species%></p>
+          <h1><%= pet.name %></h1>
+          <p><%= pet.age %> year old</p>
+          <p><%= pet.species %></p>
         </div>
         <div class="description">
-          <%=pet.description%>
+          <%= pet.description %>
         </div>
         <div class="buttonContainer">
-          <a class="formButton editButton" href="/pets/<%=pet.id%>/update">Edit</a>
-          <a class="formButton deleteButton" href="/pets/<%=pet.id%>/delete">Delete</a>
+          <a class="formButton editButton" href="/pets/<%= pet.id %>/update">Edit</a>
+          <a class="formButton deleteButton" href="/pets/<%= pet.id %>/delete">Delete</a>
         </div>
       </div>
     </div>
