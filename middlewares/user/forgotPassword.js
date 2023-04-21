@@ -11,6 +11,5 @@ module.exports = function(objectRepository) {
   return function(req, res, next) {
     console.log(mockUser.password);
     res.redirect('/');
-    return next();
   };
 };
