@@ -21,3 +21,13 @@ textarea {
   font-size: 0.8rem;
   color: red;
 }
+
+.cleanButton {
+  font-family: inherit;
+  border: none;
+  background: none;
+  text-decoration: none;
+  font-size: 1.25rem;
+
+  color: inherit;
+}

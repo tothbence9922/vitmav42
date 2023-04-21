@@ -5,9 +5,28 @@
  */
 
 const requireOption = require('../requireOption');
+const mockUser = require('../../mock/user/user');
 
 module.exports = function(objectRepository) {
   return function(req, res, next) {
-    return next();
+    /**
+     * TODO:
+     * - Get {
+     *  name: string,
+     *  specie: string,
+     *  age: number,
+     *  description: string,
+     * } from the req.body
+     * - Store in the DB
+     * - Redirect to /pets
+     */
+    console.log({
+      ownerId: mockUser.id, /* TODO: add ownerId to Pet model */
+      name: req?.body?.name,
+      specie: req?.body?.specie,
+      age: parseInt(req?.body?.age),
+      description: req?.body?.description,
+    });
+    return res.redirect("/pets");
   };
 };

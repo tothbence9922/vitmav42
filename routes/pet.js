@@ -17,14 +17,20 @@ module.exports = function (app) {
     Pet: Pet
   };
 
+  app.get(
+    '/pets/create',
+    auth(objectRepository),
+    renderMiddleware(objectRepository, 'addPet')
+  );
   app.use(
     '/pets/create',
+    auth(objectRepository),
     createPet(objectRepository),
-    renderMiddleware(objectRepository, 'addPet')
   );
 
   app.get(
     '/pets',
+    auth(objectRepository),
     getUserByToken(objectRepository),
     getPets(objectRepository),
     renderMiddleware(objectRepository, 'petList')
@@ -32,12 +38,14 @@ module.exports = function (app) {
 
   app.get(
     '/pets/:petId',
+    auth(objectRepository),
     getPetById(objectRepository),
     renderMiddleware(objectRepository, 'petDetails')
   );
 
   app.use(
     '/pets/:petId/update',
+    auth(objectRepository),
     getPetById(objectRepository),
     updatePet(objectRepository),
     renderMiddleware(objectRepository, 'editPet')

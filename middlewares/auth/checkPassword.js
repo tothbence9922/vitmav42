@@ -6,16 +6,24 @@ const requireOption = require('../requireOption');
 
 module.exports = function(objectRepository) {
   return function(req, res, next) {
-        if (typeof req?.body?.password === 'undefined') {
-            return next();
-        }
+    if (typeof req?.body?.password === 'undefined') {
+      return next();
+    }
 
-        if (req?.body?.password === "asd") {
-            req.session.token = true;
-            return req.session.save(err => res.redirect('/pets'));
-        }
-        res.locals.username = req?.body?.username;
-        res.locals.error = 'Hibás jelszó!';
-        return next();
-    };
+    /**
+     * TODO:
+     * - Get user from DB
+     * - Compare user.password with given password
+     * - Act accordingly 
+     */ 
+
+    if (req?.body?.password === "asd") {
+      req.session.token = true;
+      return req.session.save(err => res.redirect('/pets'));
+    }
+
+    res.locals.username = req?.body?.username;
+    res.locals.error = 'Hibás jelszó!';
+    return next();
+  };
 };

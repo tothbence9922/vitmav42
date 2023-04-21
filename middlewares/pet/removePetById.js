@@ -9,6 +9,7 @@ const requireOption = require('../requireOption');
 
 module.exports = function(objectRepository) {
   return function(req, res, next) {
-        return next();
-    };
+    /* TODO: Remove given pet from the DB */
+    return res.redirect('/pets');
+  };
 };
