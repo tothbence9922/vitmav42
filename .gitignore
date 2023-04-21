@@ -3,3 +3,5 @@
 
 # Ignore mac being a weirdo
 .DS_Store
+
+*.zip
