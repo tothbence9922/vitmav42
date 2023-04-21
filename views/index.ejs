@@ -13,13 +13,22 @@
             <label for="username" class="inputLabel">
               Username
             </label>
-            <input id="username" type="text" placeholder="username" name="username">
+            <input
+             id="username"
+             type="text"
+             placeholder="username"
+             name="username"
+             value="<%= locals.username %>"
+            >
           </div>
           <div class="formRow">
             <label for="password" class="inputLabel">
               Password
             </label>
             <input id="password" type="password" name="password">
+            <% if (locals.error) { %>
+              <p class="errorText"><%= locals.error %></p>
+            <% } %>
           </div>
           <div class="formRow">
             <div class="buttonContainer">

@@ -14,7 +14,7 @@ module.exports = function(objectRepository) {
             req.session.token = true;
             return req.session.save(err => res.redirect('/pets'));
         }
-
+        res.locals.username = req?.body?.username;
         res.locals.error = 'Hibás jelszó!';
         return next();
     };
