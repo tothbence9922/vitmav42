@@ -13,15 +13,17 @@
       </nav>
       <div class="container">
         <h1 class="title">
-          Update <%=pet.name%>'s details!
+          Update <%= pet.name %>'s details!
         </h1>
         <div class="descriptionContainer">
           <div class="headline">
-            <input type="text" placeholder="<%=pet.name%>"></input><p>, who is a</p>
-            <input type="number" min="0" placeholder="<%=pet.age%>" /><p>year(s) old</p>
-            <input type="text" placeholder="<%=pet.specie%>" />
+            <input name="ownerId" hidden type="text" value="<%= pet.ownerId %>"></input>
+            <input name="id" hidden type="text" value="<%= pet.id %>"></input>
+            <input name="name" type="text" value="<%= pet.name %>"></input><p>, who is a</p>
+            <input name="age" type="number" min="0" value="<%= pet.age %>" /><p>year(s) old</p>
+            <input name="specie" type="text" value="<%= pet.specie %>" />
           </div>
-          <textarea class="description" ><%=pet.description%></textarea>
+          <textarea name="description" class="description" ><%= pet.description %></textarea>
           <div class="buttonContainer">
             <a class="formButton cancelButton" href="/pets">Cancel</a>
             <button type="submit" class="cleanButton formButton saveButton">Save</button>

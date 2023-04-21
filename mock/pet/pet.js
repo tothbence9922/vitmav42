@@ -1,5 +1,6 @@
 const pet = {
   id: 0,
+  ownerId: 0,
   name: "Becky",
   specie: "Dog",
   breed: "Golden retriever",

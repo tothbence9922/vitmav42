@@ -43,12 +43,17 @@ module.exports = function (app) {
     renderMiddleware(objectRepository, 'petDetails')
   );
 
+  app.get(
+    '/pets/:petId/update',
+    auth(objectRepository),
+    getPetById(objectRepository),
+    renderMiddleware(objectRepository, 'editPet')
+  );
   app.use(
     '/pets/:petId/update',
     auth(objectRepository),
     getPetById(objectRepository),
     updatePet(objectRepository),
-    renderMiddleware(objectRepository, 'editPet')
   );
 
   app.get(

@@ -1,6 +1,7 @@
 const petList = [
   {
     id: 0,
+    ownerId: 0,
     name: "Becky",
     specie: "Dog",
     breed: "Golden retriever",
@@ -9,6 +10,7 @@ const petList = [
   },
   {
     id: 1,
+    ownerId: 0,
     name: "Bicky",
     specie: "Dog",
     breed: "Pitbull",
@@ -17,6 +19,7 @@ const petList = [
   },
   {
     id: 2,
+    ownerId: 0,
     name: "Bucky",
     specie: "Dog",
     breed: "Golden retriever",
@@ -25,6 +28,7 @@ const petList = [
   },
   {
     id: 3,
+    ownerId: 0,
     name: "Backy",
     specie: "Dog",
     breed: "Golden retriever",
