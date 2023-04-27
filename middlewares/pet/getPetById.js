@@ -8,8 +8,28 @@ const requireOption = require('../requireOption');
 const mockPets = require('../../mock/pet/petList')
 
 module.exports = function(objectRepository) {
-  return function(req, res, next) {
-    res.locals.pet = mockPets.find(pet => pet.id === parseInt(req?.params?.petId));
-    return next();
-  };
+    const Pet = requireOption(objectRepository, 'Pet');
+    return async function(req, res, next) {
+      try {
+        const pet = await Pet.findOne({_id: req?.params?.petId}).exec();
+
+
+        if (typeof res.locals.pet === 'undefined'){
+          res.locals.pet = new Pet();
+        }
+
+        if (pet) {
+          res.locals.pet.name = pet.name;
+          res.locals.pet.age = pet.age;
+          res.locals.pet.specie = pet.specie;
+          res.locals.pet.description = pet.description;
+        } else {
+          return res.redirect('/pets');
+        }
+  
+      } catch (error) {
+        return next(error);
+      }
+      return next();
+    };
 };
