@@ -35,14 +35,13 @@ module.exports = function(objectRepository) {
         res.locals.pet.specie = req.body.specie;
         res.locals.pet.age = req.body.age; 
         res.locals.pet.description = req.body.description;
-        
+
         try {
           res.locals.pet.save();
         } catch (error) {
           return next(error);
         }
 
-        return res.redirect(`/pets`);
       } else {
         res.redirect(`/`);
       }
