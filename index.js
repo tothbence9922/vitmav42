@@ -2,9 +2,6 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const mongoose = require('mongoose');
-const Schema = require('mongoose').Schema;
-mongoose.connect('mongodb://localhost/vitmav42');
 
 const port = 3000
 
