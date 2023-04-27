@@ -5,28 +5,51 @@
  */
 
 const requireOption = require('../requireOption');
-const mockUser = require('../../mock/user/user');
 
 module.exports = function(objectRepository) {
-  return function(req, res, next) {
-    /**
-     * TODO:
-     * - Get {
-     *  name: string,
-     *  specie: string,
-     *  age: number,
-     *  description: string,
-     * } from the req.body
-     * - Store in the DB
-     * - Redirect to /pets
-     */
-    console.log({
-      ownerId: mockUser.id, /* TODO: add ownerId to Pet model */
-      name: req?.body?.name,
-      specie: req?.body?.specie,
-      age: parseInt(req?.body?.age),
-      description: req?.body?.description,
-    });
+  const User = requireOption(objectRepository, 'User');
+  const Pet = requireOption(objectRepository, 'Pet');
+
+  return async function(req, res, next) {
+
+    if (
+      typeof req?.body?.name === 'undefined' ||
+      typeof req?.body?.specie === 'undefined' ||
+      typeof req?.body?.age === 'undefined' ||
+      typeof req?.body?.description === 'undefined'
+    ) {
+        return next();
+    }
+
+    try {
+      const user = await User.findOne({username: req.session.token}).exec(); // using mocked identity
+
+      if (user){
+
+        if (typeof res.locals.pet === 'undefined') {
+          res.locals.pet = new Pet();
+        }
+    
+        res.locals.pet.ownerId = user._id;
+        res.locals.pet.name = req.body.name;
+        res.locals.pet.specie = req.body.specie;
+        res.locals.pet.age = req.body.age; 
+        res.locals.pet.description = req.body.description;
+        
+        try {
+          res.locals.pet.save();
+        } catch (error) {
+          return next(error);
+        }
+
+        return res.redirect(`/pets`);
+      } else {
+        res.redirect(`/`);
+      }
+    } catch (error) {
+      return next(error);
+    }
+
     return res.redirect("/pets");
   };
 };

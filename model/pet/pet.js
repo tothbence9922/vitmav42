@@ -7,10 +7,7 @@ const Pet = db.model('Pet', {
   breed: String,
   age: String,
   description: String,
-  _ownerId: {
-      type: Schema.Types.ObjectId,
-      ref: 'OwnerId'
-  }
+  ownerId: Schema.Types.ObjectId
 });
 
 
