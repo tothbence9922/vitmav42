@@ -16,10 +16,9 @@ module.exports = function(objectRepository) {
     }
 
     try {
-      const user = await User.findOne({username: req.username}).exec();
-
-      if (req.body.password === user.password) {
-        req.session.token = req.username + ':' + user.password; // Mocking identity providing
+      const user = await User.findOne({username: req.body.username}).exec();
+      if (user && req.body.password === user.password) {
+        req.session.token = req.body.username; // Mocking identity providing
         return req.session.save(err => res.redirect('/pets'));
       }
 

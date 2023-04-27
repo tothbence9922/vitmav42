@@ -11,7 +11,7 @@
         <% if (locals.successText) { %>
           <p class="successText"><%= locals.successText %></p>
         <% } %>
-        <form class="form" method="post">
+        <form class="topForm" method="post">
           <div class="formRow">
             <label for="username" class="inputLabel">
               Username
@@ -28,17 +28,36 @@
             <label for="password" class="inputLabel">
               Password
             </label>
-            <input id="password" type="password" name="password">
+            <input 
+              id="password"
+              type="password" 
+              name="password" 
+              value="<%= locals.password %>"
+            >
             <% if (locals.error) { %>
               <p class="errorText"><%= locals.error %></p>
             <% } %>
           </div>
-          <div class="formRow">
+          <div class="bottomContainer">
             <div class="buttonContainer">
               <a href="/register" class="styledButton">Register</a>
               <button type="submit" class="styledButton hoverButton">Login</button>
             </div>
-            <a href="/forgot-password" class="forgotPassword">Forgot your password?</a>
+          </div>
+        </form>
+        <form class="bottomForm" method="post" action="/forgot-password">
+          <div class="forgotPasswordContainer">
+            <br/>
+            <input
+             id="username"
+             type="text"
+             name="username"
+             hidden
+             value="<%= locals.username %>"
+            >
+            <% if (!!locals.username) { %>
+              <button type="submit" class="cleanButton hoverButton forgotPassword">Forgot your password? <br/> (enter username and click here)</button>
+            <% } %>
           </div>
         </form>
       </div>

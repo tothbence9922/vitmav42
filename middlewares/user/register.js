@@ -26,9 +26,8 @@ module.exports = function(objectRepository) {
     if ( req.body.username && req.body.password && req.body.confirmPassword ) {
       if ( req.body.password ===  req.body.confirmPassword ) {
 
-        res.locals.user.name = req.body.username;
+        res.locals.user.username = req.body.username;
         res.locals.user.password = req.body.password;
-
         try {
           res.locals.user.save();
         } catch (error) {

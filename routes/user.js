@@ -26,7 +26,7 @@ module.exports = function (app) {
     logout(objectRepository),
   );
 
-  app.get(
+  app.use(
     '/forgot-password',
     forgotPassword(objectRepository),
   );

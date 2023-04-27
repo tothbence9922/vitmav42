@@ -6,12 +6,15 @@
  */
 
 const requireOption = require('../requireOption');
-const mockUser = require('../../mock/user/user');
 
 module.exports = function(objectRepository) {
   
   return function(req, res, next) {
-    res.locals.user = mockUser;
+    const username = req?.session?.token; // Mocking identity providing
+    if (!username ) {
+      return res.redirect('/');
+    }
+    res.locals.user = username;
     return next();
   };
 };
