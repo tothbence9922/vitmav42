@@ -5,13 +5,12 @@
  */
 
 const requireOption = require('../requireOption');
-const mockPets = require('../../mock/pet/petList')
 
 module.exports = function(objectRepository) {
     const Pet = requireOption(objectRepository, 'Pet');
     return async function(req, res, next) {
       try {
-        const pet = await Pet.findOne({_id: req?.params?.petId}).exec();
+        const pet = await Pet.findById(req?.params?.petId).exec();
 
 
         if (typeof res.locals.pet === 'undefined'){
@@ -19,6 +18,7 @@ module.exports = function(objectRepository) {
         }
 
         if (pet) {
+          res.locals.pet._id = req?.params?.petId;
           res.locals.pet.name = pet.name;
           res.locals.pet.age = pet.age;
           res.locals.pet.specie = pet.specie;

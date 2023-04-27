@@ -6,10 +6,20 @@
  */
 
 const requireOption = require('../requireOption');
+var ObjectId = require('mongoose').Types.ObjectId; 
 
 module.exports = function(objectRepository) {
-  return function(req, res, next) {
-    /* TODO: Remove given pet from the DB */
+  const Pet = requireOption(objectRepository, 'Pet');
+
+  return async function(req, res, next) {
+    if (typeof req?.params?.petId === 'undefined'){
+      return res.redirect('/pets');
+    }
+    try {
+      const petToDelete = await Pet.findByIdAndRemove(req?.params?.petId).exec();
+    } catch (error) {
+      return next(error);
+    }
     return res.redirect('/pets');
   };
 };

@@ -4,7 +4,7 @@
  */
 
 const requireOption = require('../requireOption');
-const mockPets = require('../../mock/pet/petList')
+var ObjectId = require('mongoose').Types.ObjectId; 
 
 module.exports = function(objectRepository) {
   const User = requireOption(objectRepository, 'User');
@@ -17,9 +17,14 @@ module.exports = function(objectRepository) {
 
       if (user){
         const pets = await Pet.find({ownerId: user._id}).exec(); // using mocked identity
-
-        res.locals.pets = pets;  
-
+        res.locals.pets = pets.map(( {_id, name, age, specie, description, ownerId})=> ({
+          _id: new ObjectId(_id),
+          name,
+          age,
+          specie,
+          description,
+          ownerId
+        }));  
       } else {
         res.redirect(`/`);
       }

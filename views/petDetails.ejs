@@ -21,8 +21,11 @@
           <%= pet.description %>
         </div>
         <div class="buttonContainer">
-          <a class="formButton editButton" href="/pets/<%= pet.id %>/update">Edit</a>
-          <a class="formButton deleteButton" href="/pets/<%= pet.id %>/delete">Delete</a>
+          <p>
+            <%= pet._id %>
+          </p>
+          <a class="formButton editButton" href="/pets/<%= pet._id %>/update">Edit</a>
+          <a class="formButton deleteButton" href="/pets/<%= pet._id %>/delete">Delete</a>
         </div>
       </div>
     </div>

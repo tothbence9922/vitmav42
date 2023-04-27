@@ -58,7 +58,7 @@ module.exports = function (app) {
     updatePet(objectRepository),
   );
 
-  app.get(
+  app.use(
     '/pets/:petId/delete',
     auth(objectRepository),
     removePetById(objectRepository),
