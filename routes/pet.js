@@ -9,7 +9,7 @@ const removePetById = require('../middlewares/pet/removePetById');
 const updatePet = require('../middlewares/pet/updatePet');
 const getUserByToken = require('../middlewares/user/getUserByToken');
 
-const Pet = {}
+const Pet = require('../model/pet/pet');
 
 module.exports = function (app) {
 

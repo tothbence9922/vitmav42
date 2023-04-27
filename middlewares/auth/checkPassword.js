@@ -5,22 +5,29 @@
 const requireOption = require('../requireOption');
 
 module.exports = function(objectRepository) {
-  return function(req, res, next) {
-    if (typeof req?.body?.password === 'undefined') {
+  const User = requireOption(objectRepository, 'User');
+
+  return async function(req, res, next) {
+    if (
+      typeof req?.body?.username === 'undefined' ||
+      typeof req?.body?.password === 'undefined'
+    ) {
       return next();
     }
 
-    /**
-     * TODO:
-     * - Get user from DB
-     * - Compare user.password with given password
-     * - Act accordingly 
-     */ 
+    try {
+      const user = await User.findOne({username: req.username}).exec();
 
-    if (req?.body?.password === "asd") {
-      req.session.token = true;
-      return req.session.save(err => res.redirect('/pets'));
+      if (req.body.password === user.password) {
+        req.session.token = req.username + ':' + user.password; // Mocking identity providing
+        return req.session.save(err => res.redirect('/pets'));
+      }
+
+    } catch (error) {
+      return next(error);
     }
+
+    
 
     res.locals.username = req?.body?.username;
     res.locals.error = 'Hibás jelszó!';

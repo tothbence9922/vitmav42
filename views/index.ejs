@@ -8,6 +8,9 @@
     <div class="container">
       <div class="formContainer">
         <h1 class="titleText">Welcome to MyPets!</h1>
+        <% if (locals.successText) { %>
+          <p class="successText"><%= locals.successText %></p>
+        <% } %>
         <form class="form" method="post">
           <div class="formRow">
             <label for="username" class="inputLabel">

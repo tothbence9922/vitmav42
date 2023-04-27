@@ -6,7 +6,7 @@ const forgotPassword = require('../middlewares/user/forgotPassword');
 
 const createUser = require('../middlewares/user/register');
 
-const User = {}
+const User = require('../model/user/user');
 
 module.exports = function (app) {
 
