@@ -14,7 +14,7 @@
       <div class="descriptionContainer">
         <div class="headline">
           <h1><%= pet.name %></h1>
-          <p><%= pet.age %> year old</p>
+          <p><%= pet.age %> year<% if (pet.age > 1) { %>s<% } %> old</p>
           <p><%= pet.specie %></p>
         </div>
         <div class="description">

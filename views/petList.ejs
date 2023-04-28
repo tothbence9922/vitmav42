@@ -18,7 +18,7 @@
         <% pets.forEach(function(pet){ %>
           <a href="/pets/<%= pet._id %>" class="petItem">
             <h2><%= pet.name %></h2>
-            <p><%= pet.age %> year old</p>
+            <p><%= pet.age %> year<% if (pet.age > 1) { %>s<% } %> old</p>
             <p><%= pet.specie %></p>
           </a>
         <% }); %>

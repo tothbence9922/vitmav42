@@ -29,7 +29,7 @@ module.exports = function(objectRepository) {
     
 
     res.locals.username = req?.body?.username;
-    res.locals.error = 'Hibás jelszó!';
+    res.locals.error = 'Wrong password!';
     return next();
   };
 };

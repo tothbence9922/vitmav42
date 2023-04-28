@@ -22,7 +22,7 @@ module.exports = function (app) {
   app.get(
     '/pets/create',
     auth(objectRepository),
-    renderMiddleware(objectRepository, 'addPet')
+    renderMiddleware(objectRepository, 'petForm')
   );
   app.use(
     '/pets/create',
@@ -49,7 +49,7 @@ module.exports = function (app) {
     '/pets/:petId/update',
     auth(objectRepository),
     getPetById(objectRepository),
-    renderMiddleware(objectRepository, 'editPet')
+    renderMiddleware(objectRepository, 'petForm')
   );
   app.use(
     '/pets/:petId/update',
