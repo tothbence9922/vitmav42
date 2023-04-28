@@ -21,6 +21,10 @@ module.exports = function(objectRepository) {
         return next();
     }
 
+    if (Number.isNaN(parseInt(req.body.age, 10))) {
+      return next(new Error('Age must be a number!'));
+    }
+
     try {
       const user = await User.findOne({username: req.session.token}).exec(); // using mocked identity
 
@@ -33,7 +37,7 @@ module.exports = function(objectRepository) {
         res.locals.pet.ownerId = user._id;
         res.locals.pet.name = req.body.name;
         res.locals.pet.specie = req.body.specie;
-        res.locals.pet.age = req.body.age; 
+        res.locals.pet.age = parseInt(req.body.age, 10); 
         res.locals.pet.description = req.body.description;
 
         try {

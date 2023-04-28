@@ -20,6 +20,10 @@ module.exports = function(objectRepository) {
         return next();
     }
 
+    if (Number.isNaN(parseInt(req.body.age, 10))) {
+      return next(new Error('Age must be a number!'));
+    }
+
     try {
       if (typeof res.locals.pet === 'undefined') {
         res.locals.pet = new Pet();
@@ -29,7 +33,7 @@ module.exports = function(objectRepository) {
       res.locals.pet.ownerId = req.body.ownerId;
       res.locals.pet.name = req.body.name;
       res.locals.pet.specie = req.body.specie;
-      res.locals.pet.age = req.body.age; 
+      res.locals.pet.age = parseInt(req.body.age, 10); 
       res.locals.pet.description = req.body.description;
       
       const newValue = {
