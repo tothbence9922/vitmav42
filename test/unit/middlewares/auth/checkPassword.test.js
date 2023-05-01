@@ -9,7 +9,7 @@ const mockUser = {
 const DB_ERROR_TEXT = 'Database error occured';
 
 describe('checkPassword middleware', () => {
-  it('Should call next when password and/or username is missing, leaving req.session.token as is (undefined)', (done) => {
+  it('Should call next when username is missing, leaving req.session.token as is (undefined)', (done) => {
     const mw = checkPassword({
       User: {
         // Newer version of mongoose is used, no cb syntax => testing is different too
@@ -22,7 +22,7 @@ describe('checkPassword middleware', () => {
     const reqMock = {
       body: {
         username: undefined,
-        password: undefined
+        password: 'Password'
       },
       session: {
         token: undefined
@@ -46,6 +46,43 @@ describe('checkPassword middleware', () => {
     );
   });
   
+  it('Should call next when password is missing, leaving req.session.token as is (undefined)', (done) => {
+    const mw = checkPassword({
+      User: {
+        // Newer version of mongoose is used, no cb syntax => testing is different too
+        findOne: () => ({ // Not called, next() returned before reaching this part
+          exec: () => {} 
+        })
+      }
+    });
+
+    const reqMock = {
+      body: {
+        username: 'Username',
+        password: undefined
+      },
+      session: {
+        token: undefined
+      }
+    };
+
+    const resMock = {
+      locals: {
+        username: undefined,
+        error: undefined
+      }
+    };
+
+    mw(
+      reqMock,
+      resMock,
+      () => {
+        expect(reqMock.session.token).to.be.eql(undefined);
+        done();
+      }
+    );
+  });
+
   it('Should set req.session.token with the username if the passwords match', (done) => {
     const mw = checkPassword({
       User: {

@@ -112,4 +112,4 @@ describe('getPetById middleware', () => {
       }
     );
   });
-})
+});
