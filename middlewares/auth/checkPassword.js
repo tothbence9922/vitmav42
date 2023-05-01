@@ -19,14 +19,12 @@ module.exports = function(objectRepository) {
       const user = await User.findOne({username: req.body.username}).exec();
       if (user && req.body.password === user.password) {
         req.session.token = req.body.username; // Mocking identity providing
-        return req.session.save(err => res.redirect('/pets'));
+        return req.session.save(() => res.redirect('/pets'));
       }
 
     } catch (error) {
       return next(error);
     }
-
-    
 
     res.locals.username = req?.body?.username;
     res.locals.error = 'Wrong password!';
