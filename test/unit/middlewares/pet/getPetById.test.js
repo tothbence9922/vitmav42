@@ -45,6 +45,41 @@ describe('getPetById middleware', () => {
     );
   });
 
+  it('Should redirect to /pets if pet from DB is invalid', (done) => {
+    const mw = getPetById({
+      Pet: {
+        // Newer version of mongoose is used, no cb syntax => testing is different too
+        findById: (id) => ({
+          exec: () => {
+            expect(id).to.be.eql('22');
+            return undefined;
+          } 
+        })
+      }
+    });
+
+    const resMock = {
+      locals: {
+        pet: {},
+      },
+      redirect: (path) => {
+        expect(path).to.be.eql('/pets');
+        done();
+      }
+    };
+
+    mw(
+      {
+        params: {
+          petId: '22'
+        }
+      },
+      resMock,
+      () => {
+      }
+    );
+  });
+
   it('Should call next with error if there is a db problem', (done) => {
     const mw = getPetById({
       Pet: {
