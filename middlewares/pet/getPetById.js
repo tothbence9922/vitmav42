@@ -12,11 +12,12 @@ module.exports = function(objectRepository) {
       try {
         const pet = await Pet.findById(req?.params?.petId).exec();
 
+
         if (typeof res.locals.pet === 'undefined'){
           res.locals.pet = new Pet();
         }
-        console.log(pet);
-        if ( !!pet ) {
+
+        if (pet) {
           res.locals.pet._id = req?.params?.petId;
           res.locals.pet.name = pet.name;
           res.locals.pet.age = pet.age;

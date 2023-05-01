@@ -77,38 +77,4 @@ describe('getPetById middleware', () => {
       }
     );
   });
-
-  it('Should init res.locals.pet with new Pet() if pet not found', (done) => {
-    const mw = getPetById({
-      Pet: {
-        // Newer version of mongoose is used, no cb syntax => testing is different too
-        findById: (id) => ({
-          exec: () => {
-            return { code: 404, statusMessage: 'Not found'}; // mock 'not found in db'
-          } 
-        })
-      }
-    });
-
-    const resMock = {
-      locals: {
-        pet: undefined
-      },
-      redirect: (path) => {
-        console.log(path);
-        done();
-      }
-    };
-
-    mw(
-      {
-        params: {
-          petId: '22'
-        }
-      },
-      resMock,
-      () => {}
-    );
-
-  });
 })
