@@ -9,13 +9,13 @@ const removePetById = require('../middlewares/pet/removePetById');
 const updatePet = require('../middlewares/pet/updatePet');
 const getUserByToken = require('../middlewares/user/getUserByToken');
 
-const Pet = require('../model/pet/pet');
+const PetModel = require('../model/pet/pet');
 const User = require('../model/user/user');
 
 module.exports = function (app) {
 
   const objectRepository = {
-    Pet: Pet,
+    PetModel: PetModel,
     User: User
   };
 

@@ -84,7 +84,7 @@ describe('getPetById middleware', () => {
     const mw = getPetById({
       Pet: {
         // Newer version of mongoose is used, no cb syntax => testing is different too
-        findById: (id) => ({
+        findById: () => ({
           exec: () => {
             throw new Error('Database error occured'); // mocking db error
           } 
@@ -108,6 +108,38 @@ describe('getPetById middleware', () => {
       resMock,
       (error) => {
         expect(error.message).to.be.eql('Database error occured');
+        done();
+      }
+    );
+  });
+
+class MockPet {
+  static findById() {
+    return {
+      exec: () => ({ ...mockPet })
+    }
+  }
+}
+  it('Should init locals.pet if it is undefined', (done) => {
+    const mw = getPetById({
+      Pet: MockPet
+    });
+    const resMock = {
+      locals: { },
+      redirect: (path) => {
+    
+      }
+    };
+
+    mw(
+      {
+        params: {
+          petId: '22'
+        }
+      },
+      resMock,
+      () => {
+        expect(resMock.locals.pet).to.be.eql(mockPet);
         done();
       }
     );

@@ -10,5 +10,4 @@ const Pet = db.model('Pet', {
   ownerId: Schema.Types.ObjectId
 });
 
-
 module.exports = Pet;
